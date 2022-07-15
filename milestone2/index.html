@@ -1,0 +1,34 @@
+{% extends '_layout.html' %}
+{% block main_page %}
+
+    <div class="main-page">
+        <div class="hero">
+            <h1 class="top-header">Use the search bar to find relevant documents</h1>
+            <form action="" method="POST">
+                <input type="text" placeholder="Enter search term" class="query-control" name="query" value="{{query}}">
+                <button type="submit" class="button-control">Search</button>
+            </form>
+        </div>
+        <div class="container search-results">
+            <div class="row">
+                <div class="col-md-6"></div>
+                    <h1>Search Results </h1>
+                        {% for doc in doc_results %}
+                            <div class="card">
+                                <h5 class="card-header">
+                                    {{ doc.article_title }}
+                                </h5>
+                                <div class="card-body">
+                                        {{ doc.section_title }}
+                                </div>
+                                <p class="card-text">
+                                        {{ doc.body_text|truncate(500)}}
+                                </p>
+                            </div>
+                        {% endfor %}    
+                </div>
+
+            </div>
+        </div>
+</div>
+{% endblock %}
